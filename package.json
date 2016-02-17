@@ -1,0 +1,27 @@
+{
+	"name": "cjsx",
+	"displayName": "cjsx",
+	"description": "cjsx",
+	"version": "0.0.1",
+	"publisher": "crisward",
+  "icon":"images/icon.png",
+	"engines": {
+		"vscode": "^0.10.6"
+	},
+	"categories": [
+		"Languages"
+	],
+	"contributes": {
+		"languages": [{
+			"id": "coffee",
+			"aliases": ["CJSX", "coffee"],
+			"extensions": [".cjsx",".coffee",".Cakefile",".coffee.erb",".cson"],
+			"configuration": "./coffee.configuration.json"
+		}],
+		"grammars": [{
+			"language": "coffee",
+			"scopeName": "source.coffee",
+			"path": "./syntaxes/coffee.tmLanguage"
+		}]
+	}
+}
