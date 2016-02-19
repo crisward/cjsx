@@ -2,7 +2,7 @@
 	"name": "cjsx",
 	"displayName": "cjsx",
 	"description": "cjsx",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "crisward",
   "icon":"images/icon.png",
 	"engines": {
@@ -15,7 +15,7 @@
 		"languages": [{
 			"id": "coffee",
 			"aliases": ["CJSX", "coffee"],
-			"extensions": [".cjsx",".coffee",".Cakefile",".coffee.erb",".cson"],
+			"extensions": [".cjsx"],
 			"configuration": "./coffee.configuration.json"
 		}],
 		"grammars": [{
