@@ -1,8 +1,8 @@
 {
 	"name": "cjsx",
 	"displayName": "cjsx",
-	"description": "cjsx",
-	"version": "0.0.4",
+	"description": "Syntax Highlighting for React's JSX + Coffeescript",
+	"version": "0.0.5",
 	"publisher": "crisward",
   "icon":"images/icon.png",
 	"engines": {
