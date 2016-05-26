@@ -2,7 +2,7 @@
 	"name": "cjsx",
 	"displayName": "cjsx",
 	"description": "cjsx",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "crisward",
   "icon":"images/icon.png",
 	"engines": {
