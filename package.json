@@ -8,6 +8,7 @@
 	"engines": {
 		"vscode": "^0.10.6"
 	},
+	"keywords":["cjsx","react","coffeescript","coffee","coffee-script"],
 	"categories": [
 		"Languages"
 	],
