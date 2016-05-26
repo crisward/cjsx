@@ -7,10 +7,6 @@
 	<key>fileTypes</key>
 	<array>
 		<string>cjsx</string>
-		<string>coffee</string>
-		<string>Cakefile</string>
-		<string>coffee.erb</string>
-		<string>cson</string>
 	</array>
 	<key>firstLineMatch</key>
 	<string>^#!.*\bcoffee</string>
@@ -174,7 +170,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>###</string>
+			<string>###(?:[ \t]*\n)</string>
 			<key>name</key>
 			<string>comment.block.coffee</string>
 			<key>patterns</key>
@@ -306,11 +302,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#jsx-single-quoted-prop</string>
+					<string>#single_quoted_string</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#jsx-double-quoted-prop</string>
+					<string>#double_quoted_string</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -569,26 +565,6 @@
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>double_quote</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)</string>
-					<key>name</key>
-					<string>constant.character.escape.coffee</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#interpolated_coffee</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx-entities</string>
-				</dict>
-			</array>
-		</dict>
 		<key>double_quoted_string</key>
 		<dict>
 			<key>patterns</key>
@@ -619,8 +595,18 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)</string>
+							<key>name</key>
+							<string>constant.character.escape.coffee</string>
+						</dict>
+						<dict>
 							<key>include</key>
-							<string>#double_quote</string>
+							<string>#interpolated_coffee</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#jsx-entities</string>
 						</dict>
 					</array>
 				</dict>
@@ -695,14 +681,6 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#jsx-evaluated-code</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx-tag-area</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#jsx-tag-open</string>
 				</dict>
 				<dict>
@@ -712,47 +690,6 @@
 				<dict>
 					<key>include</key>
 					<string>#jsx-tag-invalid</string>
-				</dict>
-			</array>
-		</dict>
-		<key>jsx-double-quoted-prop</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>(?:\s*=\s*)(")</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.double.punctuation.definition.begin.coffee</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>"</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.double.punctuation.definition.end.coffee</string>
-						</dict>
-					</dict>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#double_quote</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>.*?</string>
-							<key>name</key>
-							<string>string.quoted.double.coffee</string>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
@@ -815,100 +752,11 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#expression</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>$self</string>
-				</dict>
-			</array>
-		</dict>
-		<key>jsx-single-quoted-prop</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>(?:=)\s?*(')</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.single.punctuation.definition.string.begin.coffee</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>'</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.single.punctuation.definition.string.end.coffee</string>
-						</dict>
-					</dict>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#single_quote</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>.*?</string>
-							<key>name</key>
-							<string>string.quoted.single.coffee</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<key>jsx-tag-area</key>
-		<dict>
-			<key>begin</key>
-			<string>(&lt;)([a-zA-Z0-9:.]+)(?![^
-]*/&gt;)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.begin.coffee</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.coffee</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(&lt;/)(\2)([^&gt;]*&gt;)|(\/&gt;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.begin.coffee</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.coffee</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.end.coffee</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>jsx.tag-area.coffee</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#jsx-tag-attributes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx</string>
 				</dict>
 			</array>
 		</dict>
@@ -919,13 +767,13 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.other.attribute-name.html</string>
+					<string>entity.other.attribute-name.coffee</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b([a-zA-Z_:][a-zA-Z_:0-9\-\.]*)</string>
+			<string>\b([a-zA-Z\-:]+)</string>
 			<key>name</key>
-			<string>meta.tag.attribute-name.html</string>
+			<string>meta.tag.attribute-name.coffee</string>
 		</dict>
 		<key>jsx-tag-attributes</key>
 		<dict>
@@ -937,11 +785,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#jsx-double-quoted-prop</string>
+					<string>#double_quoted_string</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#jsx-single-quoted-prop</string>
+					<string>#single_quoted_string</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -970,7 +818,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(&lt;/)([^&gt;]+)(&gt;)|(\/&gt;)</string>
+			<string>(&lt;/)([^&gt;]+)(&gt;)</string>
 			<key>name</key>
 			<string>tag.close.coffee</string>
 		</dict>
@@ -984,7 +832,7 @@
 		<key>jsx-tag-open</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)([a-zA-Z0-9:.]+)</string>
+			<string>(&lt;)([a-zA-Z0-9:]+)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1030,22 +878,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>single_quote</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
-					<key>name</key>
-					<string>constant.character.escape.coffee</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx-entities</string>
-				</dict>
-			</array>
-		</dict>
 		<key>single_quoted_string</key>
 		<dict>
 			<key>patterns</key>
@@ -1076,8 +908,14 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
+							<key>name</key>
+							<string>constant.character.escape.coffee</string>
+						</dict>
+						<dict>
 							<key>include</key>
-							<string>#single_quote</string>
+							<string>#jsx-entities</string>
 						</dict>
 					</array>
 				</dict>
