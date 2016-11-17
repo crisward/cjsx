@@ -17,7 +17,7 @@
 			"id": "coffee",
 			"aliases": ["CJSX", "coffee"],
 			"extensions": [".cjsx"],
-			"configuration": "./coffee.configuration.json"
+			"configuration": "./cjsx.configuration.json"
 		}],
 		"grammars": [{
 			"language": "coffee",
