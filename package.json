@@ -1,28 +1,43 @@
 {
-	"name": "cjsx",
-	"displayName": "cjsx",
-	"description": "cjsx",
-	"version": "0.0.3",
-	"publisher": "crisward",
-  "icon":"images/icon.png",
-	"engines": {
-		"vscode": "^0.10.6"
-	},
-	"keywords":["cjsx","react","coffeescript","coffee","coffee-script"],
-	"categories": [
-		"Languages"
-	],
-	"contributes": {
-		"languages": [{
-			"id": "coffee",
-			"aliases": ["CJSX", "coffee"],
-			"extensions": [".cjsx"],
-			"configuration": "./cjsx.configuration.json"
-		}],
-		"grammars": [{
-			"language": "coffee",
-			"scopeName": "source.coffee",
-			"path": "./syntaxes/coffee.tmLanguage"
-		}]
-	}
+  "name": "cjsx",
+  "displayName": "cjsx",
+  "description": "cjsx",
+  "version": "0.0.4",
+  "publisher": "crisward",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^0.10.6"
+  },
+  "keywords": [
+    "cjsx",
+    "react",
+    "coffeescript",
+    "coffee",
+    "coffee-script"
+  ],
+  "categories": [
+    "Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "coffee",
+        "aliases": [
+          "CJSX",
+          "coffee"
+        ],
+        "extensions": [
+          ".cjsx"
+        ],
+        "configuration": "./cjsx.configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "coffee",
+        "scopeName": "source.coffee",
+        "path": "./syntaxes/coffee.tmLanguage"
+      }
+    ]
+  }
 }
