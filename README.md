@@ -1,7 +1,8 @@
 #CJSX Syntax Highlighting
 
-Syntax Highlighting when using Reacts JSX inside coffeescript
+Syntax Highlighting when using React's JSX with coffeescript
 in Visual Studio Code.
+
 
 ## Install
 
